@@ -1,5 +1,24 @@
 import express from 'express';
-//
-const app = express();
+import ErrorHandler from './Middlewares/ErrorHandler';
+import carRoutes from './Routes/CarRoute';
 
-export default app;
+class App {
+  public app: express.Express;
+
+  constructor() {
+    this.app = express();
+    this.app.use(express.json());
+    this.initRoutes();
+    this.initMiddlewares();
+  }
+
+  private initMiddlewares(): void {
+    this.app.use(ErrorHandler.handle);
+  }
+
+  private initRoutes(): void {
+    this.app.use(carRoutes);
+  }
+}
+
+export default new App().app;
