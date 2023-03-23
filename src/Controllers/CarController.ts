@@ -53,7 +53,7 @@ export default class CarController {
   public async remove() {
     try {
       await this.service.remove(this.req.params.id);
-      return this.res.status(200).end();
+      return this.res.status(204).end();
     } catch (error) {
       this.next(error);
     }
