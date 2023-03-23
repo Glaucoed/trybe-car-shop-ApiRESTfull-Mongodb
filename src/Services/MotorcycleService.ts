@@ -4,7 +4,7 @@ import IMotorcycle from '../Interfaces/IMotorcycle';
 import IService from '../Interfaces/IService';
 import MotorcycleODM from '../Models/MotorcycleODM';
 
-const ID_NOT_FOUND = 'Car not found';
+const ID_NOT_FOUND = 'Motorcycle not found';
 
 export default class MotorcycleService implements IService<IMotorcycle, Motorcycle> {
   async create(dto: IMotorcycle): Promise<Motorcycle> {

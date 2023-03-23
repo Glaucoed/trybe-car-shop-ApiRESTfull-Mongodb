@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { Model } from 'mongoose';
 import sinon from 'sinon';
-import MotorcycleService from '../../../src/Services/Motorcycle';
+import MotorcycleService from '../../../src/Services/MotorcycleService';
 import { inputMock, outputMock } from '../Mocks/mockMotocycleService';
 
 describe('Testes da camada de serviço de Motocycle - create', function () {

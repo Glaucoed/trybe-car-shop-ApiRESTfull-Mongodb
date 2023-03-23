@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import MotorcycleService from '../Services/Motorcycle';
+import MotorcycleService from '../Services/MotorcycleService';
 
 export default class MotorcycleController {
   private req: Request;
@@ -18,6 +18,24 @@ export default class MotorcycleController {
     try {
       const motorcycle = await this.service.create({ ...this.req.body });
       return this.res.status(201).json(motorcycle);
+    } catch (error) {
+      this.next(error);
+    }
+  }
+
+  public async findAll() {
+    try {
+      const motorcycles = await this.service.findAll();
+      return this.res.status(200).json(motorcycles);
+    } catch (error) {
+      this.next(error);
+    }
+  }
+
+  public async findById() {
+    try {
+      const motorcycle = await this.service.findById(this.req.params.id);
+      return this.res.status(200).json(motorcycle);
     } catch (error) {
       this.next(error);
     }
