@@ -3,7 +3,7 @@ import IdInvalidError from '../Errors/IdInvalidError';
 
 const INVALID_FORMAT_ID = 'Invalid mongo id';
 
-export default abstract class AbsVehicleODM<T> {
+export default abstract class AbstractODM<T> {
   protected model;
   protected schema: Schema;
   protected modelName;

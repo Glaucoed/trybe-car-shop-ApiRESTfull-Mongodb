@@ -1,6 +1,7 @@
 import express from 'express';
 import ErrorHandler from './Middlewares/ErrorHandler';
 import carRoutes from './Routes/CarRoute';
+import motorcycleRoutes from './Routes/MotorcycleRoute';
 
 class App {
   public app: express.Express;
@@ -18,6 +19,7 @@ class App {
 
   private initRoutes(): void {
     this.app.use(carRoutes);
+    this.app.use(motorcycleRoutes);
   }
 }
 
