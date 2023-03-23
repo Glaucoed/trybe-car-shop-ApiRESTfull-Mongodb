@@ -54,7 +54,7 @@ const motorcycleNotFound = 'Motorcycle not found';
 
 const invalidMongoId = 'Invalid mongo id';
 
-const idMockInvalid = '6348ABC';
+const idMockInvalid = '6348ABD';
 
 export {
   inputMock,
