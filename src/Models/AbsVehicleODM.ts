@@ -1,4 +1,7 @@
-import { Model, models, Schema, model } from 'mongoose';
+import { Model, models, Schema, model, isValidObjectId } from 'mongoose';
+import IdInvalidError from '../Errors/IdInvalidError';
+
+const INVALID_FORMAT_ID = 'Invalid mongo id';
 
 export default abstract class AbsVehicleODM<T> {
   protected model;
@@ -14,5 +17,14 @@ export default abstract class AbsVehicleODM<T> {
   
   public async create(dto: T): Promise<T> { 
     return this.model.create({ ...dto });
+  }
+
+  public async findAll(): Promise<T[]> {
+    return this.model.find();
+  }
+
+  async findById(id: string): Promise<T | null> {
+    if (!isValidObjectId(id)) throw new IdInvalidError(INVALID_FORMAT_ID);
+    return this.model.findById(id);
   }
 }
