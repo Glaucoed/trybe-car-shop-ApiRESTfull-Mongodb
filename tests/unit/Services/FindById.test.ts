@@ -5,7 +5,7 @@ import CarService from '../../../src/Services/CarService';
 import { idMockValid, outputMock } from '../Mocks/mockService';
 
 describe('Testes da camada de serviço de Car - findById', function () {
-  it('Deve retornar uma um carro através de um ID', async function () {
+  it('Deve retornar um um carro através de um ID', async function () {
     sinon.stub(Model, 'findById').resolves(outputMock);
 
     const service = new CarService();
