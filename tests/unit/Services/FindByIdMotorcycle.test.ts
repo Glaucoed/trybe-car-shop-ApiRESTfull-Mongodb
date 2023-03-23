@@ -1,18 +1,18 @@
 import { expect } from 'chai';
 import { Model } from 'mongoose';
 import sinon from 'sinon';
-import CarService from '../../../src/Services/CarService';
-import { carNotFound, idMockValid, outputMock } from '../Mocks/mockCarService';
+import MotorcycleService from '../../../src/Services/MotorcycleService';
+import { motorcycleNotFound, idMockValid, outputMock } from '../Mocks/mockMotocycleService';
 
-describe('Testes da camada de serviço de Car - findById', function () {
+describe('Testes da camada de serviço de Motorcycle - findById', function () {
   afterEach(function () {
     sinon.restore();
   });
 
-  it('Deve retornar um um carro através de um ID', async function () {
+  it('Deve retornar uma motorcycle através de um ID', async function () {
     sinon.stub(Model, 'findById').resolves(outputMock);
 
-    const service = new CarService();
+    const service = new MotorcycleService();
     const result = await service.findById(idMockValid);
 
     expect(result).to.be.deep.equal(outputMock);
@@ -21,10 +21,10 @@ describe('Testes da camada de serviço de Car - findById', function () {
   it('Deve retornar um erro ao utilizar um ID invalido', async function () {
     try {
       sinon.stub(Model, 'findById').resolves(null);
-      const service = new CarService();
+      const service = new MotorcycleService();
       await service.findById(idMockValid);
     } catch (error) {
-      expect((error as Error).message).to.be.equal(carNotFound);
+      expect((error as Error).message).to.be.equal(motorcycleNotFound);
     }
   });
 });
