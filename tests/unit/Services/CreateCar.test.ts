@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import { Model } from 'mongoose';
 import sinon from 'sinon';
 import CarService from '../../../src/Services/CarService';
-import { inputMock, outputMock } from '../Mocks/mockService';
+import { inputMock, outputMock } from '../Mocks/mockCarService';
 
 describe('Testes da camada de serviço de Car - create', function () {
   it('Deve realizar a criação de um carro com sucesso', async function () {
@@ -12,5 +12,6 @@ describe('Testes da camada de serviço de Car - create', function () {
     const result = await service.create(inputMock);
 
     expect(result).to.be.deep.equal(outputMock);
+    sinon.restore();
   });
 });

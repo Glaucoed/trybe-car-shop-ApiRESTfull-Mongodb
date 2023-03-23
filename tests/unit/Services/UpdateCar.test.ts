@@ -9,7 +9,7 @@ import {
   idMockInvalid,
   carNotFound,
   invalidMongoId,
-} from '../Mocks/mockService';
+} from '../Mocks/mockCarService';
 
 describe('Testes da camada de serviço de Car - update', function () {
   afterEach(function () {
