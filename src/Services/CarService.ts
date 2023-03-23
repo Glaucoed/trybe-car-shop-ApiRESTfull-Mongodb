@@ -24,4 +24,10 @@ export default class CarService implements IService<ICar, Car> {
     if (!car) throw new IdNotFoundError(ID_NOT_FOUND);
     return new Car(car);
   }
+
+  async update(id: string, dto: ICar): Promise<Car> {
+    const car = await this.carODM.update(id, dto);
+    if (!car) throw new IdNotFoundError(ID_NOT_FOUND);
+    return new Car(car);
+  }
 }

@@ -25,8 +25,8 @@ export default class CarController {
 
   public async findAll() {
     try {
-      const car = await this.service.findAll();
-      return this.res.status(200).json(car);
+      const cars = await this.service.findAll();
+      return this.res.status(200).json(cars);
     } catch (error) {
       this.next(error);
     }
@@ -35,6 +35,15 @@ export default class CarController {
   public async findById() {
     try {
       const car = await this.service.findById(this.req.params.id);
+      return this.res.status(200).json(car);
+    } catch (error) {
+      this.next(error);
+    }
+  }
+
+  public async update() {
+    try {
+      const car = await this.service.update(this.req.params.id, this.req.body);
       return this.res.status(200).json(car);
     } catch (error) {
       this.next(error);
