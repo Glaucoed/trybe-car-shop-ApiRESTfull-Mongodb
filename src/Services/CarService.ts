@@ -30,4 +30,9 @@ export default class CarService implements IService<ICar, Car> {
     if (!car) throw new IdNotFoundError(ID_NOT_FOUND);
     return new Car(car);
   }
+
+  async remove(id: string): Promise<void> {
+    await this.findById(id);
+    await this.carODM.remove(id);
+  }
 }

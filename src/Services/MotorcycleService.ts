@@ -7,6 +7,8 @@ import MotorcycleODM from '../Models/MotorcycleODM';
 const ID_NOT_FOUND = 'Motorcycle not found';
 
 export default class MotorcycleService implements IService<IMotorcycle, Motorcycle> {
+  protected motorcycleODM = new MotorcycleODM();
+
   async create(dto: IMotorcycle): Promise<Motorcycle> {
     const motorcycle = await this.motorcycleODM.create(dto);
     return new Motorcycle(motorcycle);
@@ -25,5 +27,8 @@ export default class MotorcycleService implements IService<IMotorcycle, Motorcyc
     if (!motorcycle) throw new IdNotFoundError(ID_NOT_FOUND);
     return new Motorcycle(motorcycle);
   }
-  protected motorcycleODM = new MotorcycleODM();
+  async remove(id: string): Promise<void> {
+    await this.findById(id);
+    await this.motorcycleODM.remove(id);
+  }
 }

@@ -36,4 +36,8 @@ export default abstract class AbstractODM<T> {
       { new: true },
     );
   }
+  async remove(_id: string): Promise<void> {
+    if (!isValidObjectId(_id)) throw new IdInvalidError(INVALID_FORMAT_ID);
+    await this.model.deleteOne({ _id });
+  }
 }
